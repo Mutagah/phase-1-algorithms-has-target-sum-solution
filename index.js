@@ -10,10 +10,16 @@
 // return false
 // }
 function hasTargetSum(array,target){
+  //Initialized an empty set
   const seenNumbers = new Set() 
+  // iterated through the input array
     for (const number of array){
+      /*Found the complement number that when added with the 
+with the current number in the array would give me the targeted number*/
   const complement = target - number;
+  /*If the number has been included in the set it returns true*/
     if(seenNumbers.has(complement)) return true;
+//If the current number in the array had not been included then we add the number to the set
     seenNumbers.add(number)
   }
     return false;
