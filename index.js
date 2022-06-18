@@ -1,13 +1,41 @@
-function hasTargetSum(array, target) {
-  // Write your algorithm here
-}
-
+// function hasTargetSum(array, target) {
+//   // Write your algorithm here
+//   const seenNumbers = {}
+//   for(let number of array)
+//   {
+//     let complementNumber = target - number
+//     if(seenNumbers[complementNumber]) return true
+//     seenNumbers[number] = true
+//   }
+// return false
+// }
+function hasTargetSum(array,target){
+  const seenNumbers = new Set() 
+    for (const number of array){
+  const complement = target - number;
+    if(seenNumbers.has(complement)) return true;
+    seenNumbers.add(number)
+  }
+    return false;
+  }
+//Big O time complexity
+//O(n)
 /* 
   Write the Big O time complexity of your function here
-*/
-
+  O(3n+2) >>> O(n)
+  */
+  
 /* 
   Add your pseudocode here
+  Create am empty object
+  iterate through the input array
+  Find the complement number that will add up to our target
+  Check for a key in the object that equals the complement number,
+  if there exists such a key in the Object return true else return false.
+Save the current number as our key to enable us check it later against other 
+numbers
+If we reach the end of an array return false.
+
 */
 
 /*
@@ -29,6 +57,12 @@ if (require.main === module) {
 
   console.log("Expecting: false");
   console.log("=>", hasTargetSum([1, 2, 5], 4));
+
+  console.log(" ");
+
+  console.log("Expecting: true");
+  console.log("=>", hasTargetSum([2, 13, 1, 12, 0], 14));
+
 }
 
 module.exports = hasTargetSum;
